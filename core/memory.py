@@ -95,7 +95,7 @@ class MemoryHandler:
             new_summary = res.strip()
 
             if new_summary.startswith("[摘要]"):
-                # todo 7是怎么来的？
+                # 7是怎么来的？
                 new_summary = new_summary[7:].strip()
             return new_summary
         except Exception as e:
