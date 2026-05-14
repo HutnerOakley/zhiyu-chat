@@ -24,3 +24,11 @@ TONGYI_TEMPERATURE = 0.3
 
 # 模型最大生成长度 :用于限制模型的输出长度，防止模型输出过长。
 TONGYI_MAX_TOKEN = 1024
+
+# 记忆近期保留的对话轮数
+RECENT_WINDOW = 6
+# 每6(2 * 6 = 12)轮对话生成一次摘要
+SUMMARY_BATCH_SIZE = 12
+
+# 模型置信度阈值
+CONFIDENCE_THRESHOLD = 0.3

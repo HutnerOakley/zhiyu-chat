@@ -10,7 +10,7 @@ import json
 import re
 from typing import Any
 from dataclasses import dataclass
-from langchain_core.prompts import PromptTemplate,ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 from config.prompts import INTENT_RECOGNIZE_PROMPT
@@ -40,7 +40,7 @@ class IntentRecognizer:
         self._prompt = ChatPromptTemplate.from_messages(
             messages=[
                 ("system", INTENT_RECOGNIZE_PROMPT),
-                ("human", "{input}"),
+                ("human", "{user_input}"),
             ]
         )
         self._llm = llm
@@ -75,6 +75,8 @@ class IntentRecognizer:
             confidence = float(data.get("confidence", 0.0))
         except ValueError:
             confidence = 0.0
+
+        # 确保 confidence 在 0~1 范围内
         confidence = max(0.0, min(1.0, confidence))
 
         return IntentResult(intents=intents, slots=slots, confidence=confidence)

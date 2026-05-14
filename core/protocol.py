@@ -19,13 +19,11 @@ class ChatRequest:
     - message_id: 消息ID (可以用于做消息幂等性处理，避免重复发送相同的消息)
     - trace_id: 跟踪ID (用于日志记录和调试)
     - user_input: 用户输入的文本
-    - api_key: API密钥
     """
     message_id: str
     session_id: str
     user_id: str
     user_input: str
-    api_key: str
     trace_id: str = ""
 
 
